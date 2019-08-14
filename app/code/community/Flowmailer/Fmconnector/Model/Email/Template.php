@@ -23,17 +23,21 @@ class Flowmailer_Fmconnector_Model_Email_Template extends Flowmailer_Fmconnector
 		if ($maxdepth <= 0) { 
 			return "maxdepth";
 		}
+
 	        $public = [];
 	        if(is_array($object)) {
 			foreach ($object as $key => $value) {
 				$public[$key] = $this->mage_to_array($value, $maxdepth - 1);
 			}
+			$public['class'] = 'array';
 	
 	        } else if (is_object($object) && (is_subclass_of($object, "Varien_Object") || get_class($object) == "Varien_Object")) {
-	            $public = array_replace($public, $object->getData());
+			$public = array_replace($public, $object->getData());
+			$public['class'] = get_class($object);
 	
 		} else if(is_object($object)) {
 		
+			$public['class'] = get_class($object);
 		        $reflection = new ReflectionClass(get_class($object));
 			
 		        foreach ($reflection->getMethods(ReflectionProperty::IS_PUBLIC) as $method) {
@@ -97,22 +101,67 @@ class Flowmailer_Fmconnector_Model_Email_Template extends Flowmailer_Fmconnector
 
         $text = $this->getProcessedTemplate($vars, true);
 
-	$vardata = $this->mage_to_array($vars, 6);
+	$vardata = $this->mage_to_array($vars, 8);
 	$vardata['text'] = $text;
         $vardata['template_id'] = $templateId;
 	if(isset($vars['order'])) {
 
 		$order = $vars['order'];
 		$items = $order->getAllVisibleItems();
+		$allitems = $order->getAllItems();
 		$itemdatas = [];
 		foreach($items as $item) {
-			$d = $item->getData();
+			#$product = $item->getProduct();
+			$d = $this->mage_to_array($item, 6);
 			$d['product_options'] = $item->getProductOptions();
-			$itemdatas[] = $d;
+
+			$product = Mage::getModel('catalog/product')->load($item->getProductId());
+			$d['product'] = $this->mage_to_array($product, 6);
+			$d['product']['small_image_url'] = (string)Mage::helper('catalog/image')->init($product, 'small_image');
+			$d['product']['image_url'] = (string)Mage::helper('catalog/image')->init($product, 'image');
+			$d['product']['thumbnail_url'] = (string)Mage::helper('catalog/image')->init($product, 'thumbnail');
+
+			$subproduct = Mage::getModel('catalog/product')->loadByAttribute('sku', $item->getSku());
+			$d['subproduct'] = $this->mage_to_array($subproduct, 6);
+			$d['subproduct']['small_image_url'] = (string)Mage::helper('catalog/image')->init($subproduct, 'small_image');
+			$d['subproduct']['image_url'] = (string)Mage::helper('catalog/image')->init($subproduct, 'image');
+			$d['subproduct']['thumbnail_url'] = (string)Mage::helper('catalog/image')->init($subproduct, 'thumbnail');
+
+
+#			$d['product_url'] = $product->getProductUrl();
+#			$d['small_image_url'] = (string)Mage::helper('catalog/image')->init($product, 'small_image');
+#			$d['image_url'] = (string)Mage::helper('catalog/image')->init($product, 'image');
+#			$d['thumbnail_url'] = (string)Mage::helper('catalog/image')->init($product, 'thumbnail');
+#
+#			$p2 = Mage::getModel('catalog/product')->loadByAttribute('sku', $item->getSku());
+#			$pp = $this->mage_to_array($p2);
+#			$pp['product_url'] = $p2->getProductUrl();
+#			$pp['small_image_url'] = (string)Mage::helper('catalog/image')->init($p2, 'small_image');
+#			$pp['image_url'] = (string)Mage::helper('catalog/image')->init($p2, 'image');
+#			$pp['thumbnail_url'] = (string)Mage::helper('catalog/image')->init($p2, 'thumbnail');
+#			$d['product2'] = $pp;
+#
+#			foreach($allitems as $subitem) {
+#				if($subitem->getParentItemId() != $item->getItemId()) {
+#					continue;
+#				}
+#
+#				$subproduct = $subitem->getProduct();
+#
+#				$s = $subitem->getData();
+#				$s['product_options'] = $subitem->getProductOptions();
+#				$s['product_url'] = $subproduct->getProductUrl();
+#				$s['small_image_url'] = (string)Mage::helper('catalog/image')->init($subproduct, 'small_image');
+#				$s['image_url'] = (string)Mage::helper('catalog/image')->init($subproduct, 'image');
+#				$s['thumbnail_url'] = (string)Mage::helper('catalog/image')->init($subproduct, 'thumbnail');
+#				$d['sub_product'] = $s;
+#			}
+
+			$itemdatas[] = $this->mage_to_array($d, 6);
 		}
 
 		$vardata['order']['items'] = $itemdatas;
-		$vardata['shipping'] = $vars['order']->getShippingAddress()->getData();
+		$vardata['shipping'] = $order->getShippingAddress()->getData();
 	}
 
         $vardata['store']['url'] = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB);
