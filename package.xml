@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<package>
+    <name>Flowmailer_Fmconnector</name>
+    <version>0.1.0</version>
+    <stability>beta</stability>
+    <license>OSL</license>
+    <channel>community</channel>
+    <extends/>
+    <summary>Connect Magento's transactional e-mails to your Flowmailer account!</summary>
+    <description>Easily connect your Magento store to your Flowmailer account. The connector sends all e-mail data to the Flowmailer API, allowing you to create and manage your transactional messages in Flowmailer. After setup, you can select "Connect to Flowmailer" for each transactional message you want us to handle.&#xD;
+&#xD;
+Using multiple website, groups and stores is fully supported.&#xD;
+&#xD;
+This extension is safe to use in combination with the SMTP Pro Email extension from Aschroder.</description>
+    <notes>First public beta&#xD;
+&#xD;
+Please note BCC e-mails from Magento will not work, use Flowmailers QA-mail FlowStep for the same result.</notes>
+    <authors><author><name>rvanlooijen</name><user>rvanlooijen</user><email>richard@flowmailer.com</email></author><author><name>cmout</name><user>cmout</user><email>casper@flowmailer.com</email></author></authors>
+    <date>2016-07-22</date>
+    <time>14:56:01</time>
+    <contents><target name="magecommunity"><dir name="Flowmailer"><dir name="Fmconnector"><dir name="Helper"><file name="Data.php" hash="93487dcda1f0bfdddfb78de3a965bbdf"/></dir><dir name="Model"><dir name="Email"><file name="Template.php" hash="039b70c1df20ab508345a3883db12499"/></dir><dir name="System"><dir name="Config"><dir name="Source"><dir name="Email"><file name="Template.php" hash="29fc49b05e81de3452ab7fbdc6ee3aa5"/></dir></dir></dir></dir></dir><dir name="etc"><file name="config.xml" hash="a9afe04f5b5f9fe6812ba00612d24ec4"/><file name="system.xml" hash="0d05d6964d662c31ac4e6d6f14543a06"/></dir><dir name="locale"><dir name="en_US"><dir name="template"><dir name="email"><file name="empty.html" hash="d41d8cd98f00b204e9800998ecf8427e"/><file name="fm_account_new.html" hash="d41d8cd98f00b204e9800998ecf8427e"/><file name="fm_account_new_confirmation.html" hash="d41d8cd98f00b204e9800998ecf8427e"/><file name="fm_account_new_confirmed.html" hash="d41d8cd98f00b204e9800998ecf8427e"/><file name="fm_password_new.html" hash="d41d8cd98f00b204e9800998ecf8427e"/><file name="fm_wishlist_share.html" hash="d41d8cd98f00b204e9800998ecf8427e"/><dir name="sales"><file name="fm_creditmemo_new.html" hash="d41d8cd98f00b204e9800998ecf8427e"/><file name="fm_creditmemo_new_guest.html" hash="d41d8cd98f00b204e9800998ecf8427e"/><file name="fm_creditmemo_update.html" hash="d41d8cd98f00b204e9800998ecf8427e"/><file name="fm_creditmemo_update_guest.html" hash="d41d8cd98f00b204e9800998ecf8427e"/><file name="fm_invoice_new.html" hash="d41d8cd98f00b204e9800998ecf8427e"/><file name="fm_invoice_new_guest.html" hash="d41d8cd98f00b204e9800998ecf8427e"/><file name="fm_invoice_update.html" hash="d41d8cd98f00b204e9800998ecf8427e"/><file name="fm_invoice_update_guest.html" hash="d41d8cd98f00b204e9800998ecf8427e"/><file name="fm_order_new.html" hash="d41d8cd98f00b204e9800998ecf8427e"/><file name="fm_order_new_guest.html" hash="d41d8cd98f00b204e9800998ecf8427e"/><file name="fm_order_update.html" hash="d41d8cd98f00b204e9800998ecf8427e"/><file name="fm_order_update_guest.html" hash="d41d8cd98f00b204e9800998ecf8427e"/><file name="fm_shipment_new.html" hash="d41d8cd98f00b204e9800998ecf8427e"/><file name="fm_shipment_new_guest.html" hash="d41d8cd98f00b204e9800998ecf8427e"/><file name="fm_shipment_update.html" hash="d41d8cd98f00b204e9800998ecf8427e"/><file name="fm_shipment_update_guest.html" hash="d41d8cd98f00b204e9800998ecf8427e"/></dir></dir></dir></dir></dir></dir></dir></target><target name="mageetc"><dir name="modules"><file name="Flowmailer_Fmconnector.xml" hash="0567a4767842b9ea1de089803c75ceea"/></dir></target><target name="magelib"><dir name="Flowmailer"><file name="FlowmailerAPI.class.php" hash="c13eeb06a4840821f88cfec9404f8552"/></dir></target></contents>
+    <compatible/>
+    <dependencies><required><php><min>5.4.0</min><max>5.5.21</max></php></required></dependencies>
+</package>

@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * @category   Flowmailer
+ * @package    Flowmailer_Fmconnector
+ * @author     Casper Mout <casper@flowmailer.com>
+ * @author     Richard van Looijen <richard@flowmailer.com>
+ * @copyright  Copyright (c) 2016 Flowmailer (http://flowmailer.com)
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+<config>
+    <modules>
+        <Flowmailer_Fmconnector>
+            <version>0.1.0</version>
+        </Flowmailer_Fmconnector>
+    </modules>
+    <global>
+        <template>
+            <email>
+
+<!--
+               <fm_sales_email_order_template translate="label" module="sales">
+                   <label>Flowmailer order_new</label>
+                   <file>sales/fm_order_new.html</file>
+                   <type>html</type>
+               </fm_sales_email_order_template>
+               <fm_sales_email_order_guest_template translate="label" module="sales">
+                   <label>Flowmailer order_new_guest</label>
+                   <file>sales/fm_order_new_guest.html</file>
+                   <type>html</type>
+               </fm_sales_email_order_guest_template>
+-->
+
+<fm_customer_password_remind_email_template translate="label" module="sales">
+	<label>Flowmailer fm_customer_password_remind_email_template</label>
+	<file>empty.html</file>
+	<type>html</type>
+</fm_customer_password_remind_email_template>
+<fm_customer_password_forgot_email_template translate="label" module="sales">
+	<label>Flowmailer fm_customer_password_forgot_email_template</label>
+	<file>empty.html</file>
+	<type>html</type>
+</fm_customer_password_forgot_email_template>
+<fm_customer_create_account_email_confirmed_template translate="label" module="sales">
+	<label>Flowmailer fm_customer_create_account_email_confirmed_template</label>
+	<file>empty.html</file>
+	<type>html</type>
+</fm_customer_create_account_email_confirmed_template>
+<fm_customer_create_account_email_confirmation_template translate="label" module="sales">
+	<label>Flowmailer fm_customer_create_account_email_confirmation_template</label>
+	<file>empty.html</file>
+	<type>html</type>
+</fm_customer_create_account_email_confirmation_template>
+<fm_wishlist_email_email_template translate="label" module="sales">
+	<label>Flowmailer fm_wishlist_email_email_template</label>
+	<file>empty.html</file>
+	<type>html</type>
+</fm_wishlist_email_email_template>
+<fm_customer_create_account_email_template translate="label" module="sales">
+	<label>Flowmailer fm_customer_create_account_email_template</label>
+	<file>empty.html</file>
+	<type>html</type>
+</fm_customer_create_account_email_template>
+<fm_catalog_productalert_email_price_template translate="label" module="sales">
+	<label>Flowmailer fm_catalog_productalert_email_price_template</label>
+	<file>empty.html</file>
+	<type>html</type>
+</fm_catalog_productalert_email_price_template>
+<fm_catalog_productalert_email_stock_template translate="label" module="sales">
+	<label>Flowmailer fm_catalog_productalert_email_stock_template</label>
+	<file>empty.html</file>
+	<type>html</type>
+</fm_catalog_productalert_email_stock_template>
+<fm_sendfriend_email_template translate="label" module="sales">
+	<label>Flowmailer fm_sendfriend_email_template</label>
+	<file>empty.html</file>
+	<type>html</type>
+</fm_sendfriend_email_template>
+<fm_sales_email_order_template translate="label" module="sales">
+	<label>Flowmailer fm_sales_email_order_template</label>
+	<file>empty.html</file>
+	<type>html</type>
+</fm_sales_email_order_template>
+<fm_sales_email_order_guest_template translate="label" module="sales">
+	<label>Flowmailer fm_sales_email_order_guest_template</label>
+	<file>empty.html</file>
+	<type>html</type>
+</fm_sales_email_order_guest_template>
+<fm_sales_email_order_comment_template translate="label" module="sales">
+	<label>Flowmailer fm_sales_email_order_comment_template</label>
+	<file>empty.html</file>
+	<type>html</type>
+</fm_sales_email_order_comment_template>
+<fm_sales_email_order_comment_guest_template translate="label" module="sales">
+	<label>Flowmailer fm_sales_email_order_comment_guest_template</label>
+	<file>empty.html</file>
+	<type>html</type>
+</fm_sales_email_order_comment_guest_template>
+<fm_sales_email_invoice_template translate="label" module="sales">
+	<label>Flowmailer fm_sales_email_invoice_template</label>
+	<file>empty.html</file>
+	<type>html</type>
+</fm_sales_email_invoice_template>
+<fm_sales_email_invoice_guest_template translate="label" module="sales">
+	<label>Flowmailer fm_sales_email_invoice_guest_template</label>
+	<file>empty.html</file>
+	<type>html</type>
+</fm_sales_email_invoice_guest_template>
+<fm_sales_email_invoice_comment_template translate="label" module="sales">
+	<label>Flowmailer fm_sales_email_invoice_comment_template</label>
+	<file>empty.html</file>
+	<type>html</type>
+</fm_sales_email_invoice_comment_template>
+<fm_sales_email_invoice_comment_guest_template translate="label" module="sales">
+	<label>Flowmailer fm_sales_email_invoice_comment_guest_template</label>
+	<file>empty.html</file>
+	<type>html</type>
+</fm_sales_email_invoice_comment_guest_template>
+<fm_sales_email_shipment_template translate="label" module="sales">
+	<label>Flowmailer fm_sales_email_shipment_template</label>
+	<file>empty.html</file>
+	<type>html</type>
+</fm_sales_email_shipment_template>
+<fm_sales_email_shipment_guest_template translate="label" module="sales">
+	<label>Flowmailer fm_sales_email_shipment_guest_template</label>
+	<file>empty.html</file>
+	<type>html</type>
+</fm_sales_email_shipment_guest_template>
+<fm_sales_email_shipment_comment_template translate="label" module="sales">
+	<label>Flowmailer fm_sales_email_shipment_comment_template</label>
+	<file>empty.html</file>
+	<type>html</type>
+</fm_sales_email_shipment_comment_template>
+<fm_sales_email_shipment_comment_guest_template translate="label" module="sales">
+	<label>Flowmailer fm_sales_email_shipment_comment_guest_template</label>
+	<file>empty.html</file>
+	<type>html</type>
+</fm_sales_email_shipment_comment_guest_template>
+<fm_sales_email_creditmemo_template translate="label" module="sales">
+	<label>Flowmailer fm_sales_email_creditmemo_template</label>
+	<file>empty.html</file>
+	<type>html</type>
+</fm_sales_email_creditmemo_template>
+<fm_sales_email_creditmemo_guest_template translate="label" module="sales">
+	<label>Flowmailer fm_sales_email_creditmemo_guest_template</label>
+	<file>empty.html</file>
+	<type>html</type>
+</fm_sales_email_creditmemo_guest_template>
+<fm_sales_email_creditmemo_comment_template translate="label" module="sales">
+	<label>Flowmailer fm_sales_email_creditmemo_comment_template</label>
+	<file>empty.html</file>
+	<type>html</type>
+</fm_sales_email_creditmemo_comment_template>
+<fm_sales_email_creditmemo_comment_guest_template translate="label" module="sales">
+	<label>Flowmailer fm_sales_email_creditmemo_comment_guest_template</label>
+	<file>empty.html</file>
+	<type>html</type>
+</fm_sales_email_creditmemo_comment_guest_template>
+<fm_giftcard_email_template translate="label" module="sales">
+	<label>Flowmailer fm_giftcard_email_template</label>
+	<file>empty.html</file>
+	<type>html</type>
+</fm_giftcard_email_template>
+<fm_giftcard_giftcardaccount_email_template translate="label" module="sales">
+	<label>Flowmailer fm_giftcard_giftcardaccount_email_template</label>
+	<file>empty.html</file>
+	<type>html</type>
+</fm_giftcard_giftcardaccount_email_template>
+
+
+            </email>
+        </template>
+	<models>
+		<adminhtml>
+			<rewrite>
+				<system_config_source_email_template>Flowmailer_Fmconnector_Model_System_Config_Source_Email_Template</system_config_source_email_template>
+			</rewrite>
+		</adminhtml>
+			<core>
+				<rewrite>
+					<email_template>Flowmailer_Fmconnector_Model_Email_Template</email_template>
+				</rewrite>
+			</core>
+	</models>
+        <helpers>
+            <fmconnector>
+                <class>Flowmailer_Fmconnector_Helper</class>
+            </fmconnector>
+        </helpers>
+    </global>
+	<default>
+		<fmconnector>
+			<general>
+                                <api_client_secret backend_model="adminhtml/system_config_backend_encrypted" />
+			</general>
+		</fmconnector>
+	</default>
+
+<adminhtml>
+		<acl>
+			<resources>
+				<admin>
+					<children>
+						<system>
+							<children>
+								<config>
+									<children>
+										<fmconnector  translate="title" module="fmconnector">
+											<title>Flowmailer</title>
+										</fmconnector>
+									</children>
+								</config>
+							</children>
+						</system>
+					</children>
+				</admin>
+			</resources>
+		</acl>
+</adminhtml>
+</config>
