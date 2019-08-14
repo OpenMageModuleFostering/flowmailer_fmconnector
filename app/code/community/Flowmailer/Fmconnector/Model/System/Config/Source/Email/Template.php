@@ -36,6 +36,15 @@ class Flowmailer_Fmconnector_Model_System_Config_Source_Email_Template extends M
         if ($templateLabelNode) {
 //            $templateName = Mage::helper('adminhtml')->__((string)$templateLabelNode);
 //            $templateName = Mage::helper('adminhtml')->__('%s (Connect to Flowmailer)', $templateName);
+            
+            array_unshift(
+                $options,
+                array(
+                    'value'=> 'fm_donotsend',
+                    'label' => 'Do not send this e-mail'
+                )
+            );
+
             array_unshift(
                 $options,
                 array(

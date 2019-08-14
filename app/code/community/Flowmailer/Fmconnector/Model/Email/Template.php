@@ -29,15 +29,15 @@ class Flowmailer_Fmconnector_Model_Email_Template extends Flowmailer_Fmconnector
 			foreach ($object as $key => $value) {
 				$public[$key] = $this->mage_to_array($value, $maxdepth - 1);
 			}
-			$public['class'] = 'array';
+//			$public['class'] = 'array';
 	
 	        } else if (is_object($object) && (is_subclass_of($object, "Varien_Object") || get_class($object) == "Varien_Object")) {
 			$public = array_replace($public, $object->getData());
-			$public['class'] = get_class($object);
+//			$public['class'] = get_class($object);
 	
 		} else if(is_object($object)) {
 		
-			$public['class'] = get_class($object);
+//			$public['class'] = get_class($object);
 		        $reflection = new ReflectionClass(get_class($object));
 			
 		        foreach ($reflection->getMethods(ReflectionProperty::IS_PUBLIC) as $method) {
@@ -70,7 +70,10 @@ class Flowmailer_Fmconnector_Model_Email_Template extends Flowmailer_Fmconnector
 		parent::sendTransactional($templateId, $sender, $email, $name, $vars, $storeId);
  	       return $this;
 
-        } else if (!is_string($templateId) || strpos($templateId, 'fm_') !== 0) {
+	} else if (!is_string($templateId) || $templateId == 'fm_donotsend') {
+    		return $this;
+
+	} else if (!is_string($templateId) || strpos($templateId, 'fm_') !== 0) {
 		parent::sendTransactional($templateId, $sender, $email, $name, $vars, $storeId);
     		return $this;
 
@@ -127,8 +130,8 @@ class Flowmailer_Fmconnector_Model_Email_Template extends Flowmailer_Fmconnector
 			$d['subproduct']['image_url'] = (string)Mage::helper('catalog/image')->init($subproduct, 'image');
 			$d['subproduct']['thumbnail_url'] = (string)Mage::helper('catalog/image')->init($subproduct, 'thumbnail');
 
+			$d['product_url'] = $product->getProductUrl();
 
-#			$d['product_url'] = $product->getProductUrl();
 #			$d['small_image_url'] = (string)Mage::helper('catalog/image')->init($product, 'small_image');
 #			$d['image_url'] = (string)Mage::helper('catalog/image')->init($product, 'image');
 #			$d['thumbnail_url'] = (string)Mage::helper('catalog/image')->init($product, 'thumbnail');
