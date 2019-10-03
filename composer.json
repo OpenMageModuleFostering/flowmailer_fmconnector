@@ -1,16 +1,19 @@
 {
-    "name": "OpenMageModuleFostering/Flowmailer_Fmconnector",
+    "name": "OpenMageModuleFostering\/Flowmailer_Fmconnector",
     "type": "magento-module",
     "license": "OSL",
     "homepage": "",
     "description": "Connect Magento's transactional e-mails to your Flowmailer account!",
     "authors": [
-    {
-        "name": "rvanlooijen",
-        "email": "richard@flowmailer.com"
-    }
-],
+        {
+            "name": "rvanlooijen",
+            "email": "richard@flowmailer.com"
+        }
+    ],
     "suggest": {
-        "magento-hackathon/magento-composer-installer": "*"
-    }
+        "magento-hackathon\/magento-composer-installer": "*"
+    },
+    "keywords": [
+        "openmage-module"
+    ]
 }
